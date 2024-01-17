@@ -5,6 +5,27 @@
 
 const myForm = document.querySelector('#myForm');
 const input = document.querySelector('#sizeInput');
+let rgColor;
+
+const colorButton = document.querySelector('#rgb');
+colorButton.addEventListener('click', () => {
+    rgColor = !rgColor;
+    if (rgColor) {
+    colorButton.style.color = 'green';
+    } else {
+    colorButton.style.color = 'black';
+    }
+});
+
+const resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click', () => {
+    
+    const allTiles = document.querySelectorAll('.tiles');
+
+    allTiles.forEach(
+        e => {e.style.backgroundColor = '';}
+    );
+});
 
 myForm.addEventListener('submit', e => {
 e.preventDefault();
@@ -35,8 +56,27 @@ function makeGrid(e) {
                 rowWidth.append(tile);
             }
         }
-}
 
+    const allTiles = document.querySelectorAll('.tiles');
+
+    allTiles.forEach(
+        e => e.addEventListener('mouseover', handleMouseOver)
+    );
+
+    function handleMouseOver(e) {
+    
+        if (rgColor) {
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+        const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        e.target.style.backgroundColor = rndCol;
+        } else {
+        e.target.style.backgroundColor = 'white';
+        }
+    };
+
+    };
 
 function resetGrid() {
 
@@ -44,6 +84,7 @@ function resetGrid() {
         parentGrid.removeChild(parentGrid.firstChild);
     }
 
-}
+};
 
 makeGrid(16);
+

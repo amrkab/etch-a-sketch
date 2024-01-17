@@ -1,4 +1,4 @@
-* { border: 1px solid black; }
+/* * { border: 1px solid black; } */
 
 body {
     height: 100vh;
@@ -30,6 +30,7 @@ body {
 
 .tiles {
     flex-grow: 1;
+    background-color: black;
 }
 
 button {
@@ -42,4 +43,8 @@ button {
     padding: 15px;
     margin: 10px;
     border: 1px solid black;
+}
+
+.addColor {
+    background-color: blue;
 }
